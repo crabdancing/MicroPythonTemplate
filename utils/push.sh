@@ -5,5 +5,6 @@ set -euo pipefail
 IFS=$'\n\t'
 
 source project.conf
+source utils/check-port.sh
 
 ampy --port "$PORT" put "$FILE" "$@"
