@@ -4,5 +4,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo cp 00-teensy.rules  /etc/udev/rules.d/ -v
+FILE_NUMBER=${FILE_NUMBER:-00}
+
+sudo cp teensy.rules  "/etc/udev/rules.d/${FILE_NUMBER}-teensy.rules" -v
 sudo udevadm control --reload-rules
