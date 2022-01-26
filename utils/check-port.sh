@@ -6,11 +6,12 @@ IFS=$'\n\t'
 
 source project.conf
 
+potentially_useful_serials=$(find /dev/ -iname 'ttyACM*' -o -iname 'ttyUSB*')
 touch "${PORT}" || {
   echo "Port check failed!"
   echo "- You may want to replug your device."
   echo "- Confirm that your configured port, (${PORT}), is correct. "
-  echo "Available ACM ports include: $(ls /dev/ttyACM*)"
+  echo "Available ports include: ${potentially_useful_serials}"
   echo "(You can change this setting in 'project.conf')"
   exit 1
 } && {
