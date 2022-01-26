@@ -7,7 +7,7 @@ IFS=$'\n\t'
 src='idea-template'
 dst='.idea'
 OLD_PROJECT_NAME=${OLD_PROJECT_NAME:-'MicroPythonTemplate'}
-PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
+PROJECT_NAME=${PROJECT_NAME:-"$(basename "$(pwd)")"}
 
 cp -v 'example.project.conf' 'project.conf'
 gio trash ${dst}/ || true

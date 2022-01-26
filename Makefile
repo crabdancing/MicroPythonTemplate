@@ -1,4 +1,4 @@
-project-init:
+init-project:
 	bash utils/init-project.sh
 
 install-udev-rules:
