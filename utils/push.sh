@@ -7,4 +7,11 @@ IFS=$'\n\t'
 source project.conf
 source utils/check-port.sh
 
+if utils/check-if-lib-updated.py; then
+  echo "Pushing lib..."
+  ampy --port "$PORT" put "lib" "$@"
+fi
+
+echo "Pushing ${FILE}..."
 ampy --port "$PORT" put "$FILE" "$@"
+echo "Done."
