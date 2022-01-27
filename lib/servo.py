@@ -43,12 +43,12 @@ class BaseServo:
         self.duty_max = duty_max
         self.duty_diff = self.duty_max - self.duty_min
 
-    def deinit(self):
+    def deinit(self) -> None:
         """ Disables the PWM output
         """
         self.pwm.deinit()
 
-    def set_pin(self, pin_num: int, pwm_freq: int):
+    def set_pin(self, pin_num: int, pwm_freq: int) -> None:
         self.pin_num = pin_num
         self.pin = Pin(pin_num, Pin.OUT)
         self.pwm = PWM(self.pin)
@@ -77,22 +77,22 @@ class BaseServo:
         # Scale pos against 100
         self.set_pos(pos / 100)
 
-    def set_pos_to_middle(self):
+    def set_pos_to_middle(self) -> None:
         """ Moves the servo to the middle position
         """
         self.set_pos(0.5)
 
-    def set_pos_to_beginning(self):
+    def set_pos_to_beginning(self) -> None:
         """ Moves the servo to the starting position
         """
         self.set_pos(0)
 
-    def set_pos_to_end(self):
+    def set_pos_to_end(self) -> None:
         """ Moves the servo to the end position
         """
         self.set_pos(1)
 
-    def off(self):
+    def off(self) -> None:
         """ Turn off motor, allowing it to spin/move freely
         """
         self.pwm.duty_u16(0)
@@ -110,7 +110,7 @@ class LinearServo(BaseServo):
         # can override min, max, or freq here
         super().__init__(pin, duty_min, duty_max, pwm_freq)
 
-    def set_pos_mm(self, pos_mm: float):
+    def set_pos_mm(self, pos_mm: float) -> None:
         """ Set position in millimeters
         :param pos_mm: Position in millimeters
         """
