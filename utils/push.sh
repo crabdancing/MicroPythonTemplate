@@ -7,7 +7,12 @@ IFS=$'\n\t'
 source project.conf
 source utils/check-port.sh
 
+PROJECT_NAME=${PROJECT_NAME:-"$(basename "$(pwd)")"}
+
+
 if utils/check-if-lib-updated.py; then
+  lib_target=""
+  cp -rv "lib/" /tmp/
   echo "Pushing lib..."
   ampy --port "$PORT" put "lib" "$@"
 fi
